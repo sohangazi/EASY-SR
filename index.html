@@ -31,9 +31,7 @@ body { background: #f0f2f5; color: #333; padding: 15px; }
 .auth-box h1 { font-size: 20px; color: #333; margin-bottom: 6px; text-align: center; }
 .auth-box .sub { color: #777; font-size: 13px; margin-bottom: 22px; text-align: center; line-height: 1.5; }
 
-.auth-tabs {
-    display: flex; background: #f0f2f5; border-radius: 10px; padding: 4px; margin-bottom: 22px;
-}
+.auth-tabs { display: flex; background: #f0f2f5; border-radius: 10px; padding: 4px; margin-bottom: 22px; }
 .auth-tab {
     flex: 1; padding: 10px 12px; border: none; background: transparent; border-radius: 8px;
     cursor: pointer; font-size: 14px; font-weight: 600; color: #666; transition: all 0.2s;
@@ -42,7 +40,6 @@ body { background: #f0f2f5; color: #333; padding: 15px; }
 
 .auth-form { display: none; }
 .auth-form.active { display: block; }
-
 .auth-form .form-group { margin-bottom: 14px; }
 .auth-form label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
 .auth-form input {
@@ -50,7 +47,6 @@ body { background: #f0f2f5; color: #333; padding: 15px; }
     font-size: 15px; transition: all 0.2s;
 }
 .auth-form input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-.auth-form input:disabled { background: #f5f5f5; }
 
 .btn-auth {
     width: 100%; padding: 13px; border: none; border-radius: 8px;
@@ -59,18 +55,13 @@ body { background: #f0f2f5; color: #333; padding: 15px; }
     transition: all 0.2s; margin-top: 6px;
 }
 .btn-auth:hover { transform: translateY(-1px); box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); }
-.btn-auth:active { transform: translateY(0); }
 .btn-auth:disabled { opacity: 0.6; cursor: wait; transform: none; }
 
-.auth-link {
-    text-align: center; margin-top: 12px; font-size: 13px;
-    color: #667eea; cursor: pointer; font-weight: 600;
-}
+.auth-link { text-align: center; margin-top: 12px; font-size: 13px; color: #667eea; cursor: pointer; font-weight: 600; }
 .auth-link:hover { text-decoration: underline; }
 
 .auth-divider {
-    text-align: center; margin: 20px 0 16px; font-size: 12px; color: #999;
-    position: relative;
+    text-align: center; margin: 20px 0 16px; font-size: 12px; color: #999; position: relative;
 }
 .auth-divider::before, .auth-divider::after {
     content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: #e0e0e0;
@@ -85,19 +76,16 @@ body { background: #f0f2f5; color: #333; padding: 15px; }
     cursor: pointer; transition: all 0.2s;
 }
 .google-btn:hover { background: #f8f9fa; border-color: #c5c8cc; }
-.google-btn:disabled { opacity: 0.6; cursor: wait; }
 .google-btn svg { width: 18px; height: 18px; }
 
 .auth-error {
     background: #f8d7da; color: #721c24; padding: 10px 14px; border-radius: 8px;
-    font-size: 13px; margin-bottom: 14px; border: 1px solid #f5c6cb;
-    display: none; line-height: 1.5;
+    font-size: 13px; margin-bottom: 14px; border: 1px solid #f5c6cb; display: none; line-height: 1.5;
 }
 .auth-error.show { display: block; }
 .auth-success {
     background: #d4edda; color: #155724; padding: 10px 14px; border-radius: 8px;
-    font-size: 13px; margin-bottom: 14px; border: 1px solid #c3e6cb;
-    display: none; line-height: 1.5;
+    font-size: 13px; margin-bottom: 14px; border: 1px solid #c3e6cb; display: none; line-height: 1.5;
 }
 .auth-success.show { display: block; }
 
@@ -130,8 +118,7 @@ header {
 .user-info .avatar {
     width: 38px; height: 38px; border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center; font-size: 18px;
-    overflow: hidden;
+    display: flex; align-items: center; justify-content: center; font-size: 18px; overflow: hidden;
 }
 .user-info .name { font-weight: 700; font-size: 14px; color: white; line-height: 1.2; }
 .user-info .email { font-size: 11px; color: rgba(255,255,255,0.75); }
@@ -191,6 +178,7 @@ header {
 .form-group input:focus, .form-group select:focus { outline: none; border-color: #667eea; }
 .btn { padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
 .btn-primary { background: #667eea; color: white; }
+.btn-primary:hover { background: #5568d3; }
 .btn-success { background: #28a745; color: white; }
 .btn-success:hover { background: #218838; }
 .btn-danger { background: #dc3545; color: white; }
@@ -211,6 +199,7 @@ table tr:hover { background: #f9f9f9; }
 .summary-item .value { font-size: 16px; font-weight: 700; color: #667eea; margin-top: 5px; }
 .alert { padding: 10px 15px; border-radius: 6px; margin-bottom: 10px; font-size: 14px; }
 .alert-info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+.alert-warn { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
 .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
 .badge-success { background: #d4edda; color: #155724; }
 .badge-danger { background: #f8d7da; color: #721c24; }
@@ -256,7 +245,7 @@ table tr:hover { background: #f9f9f9; }
     background: #333; color: white; padding: 14px 24px; border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.25); font-size: 14px; font-weight: 600;
     z-index: 9999; opacity: 0; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 90vw;
+    max-width: 90vw; line-height: 1.4;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast.success { background: linear-gradient(135deg, #28a745, #20c997); }
@@ -301,6 +290,44 @@ table tr:hover { background: #f9f9f9; }
 .pdf-footer { text-align: center; color: #888; font-size: 12px; padding: 15px 30px 25px; border-top: 1px solid #eee; margin-top: 20px; }
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
+/* Telegram Setup Styles */
+.tg-setup-guide {
+    background: linear-gradient(135deg, #eef1ff 0%, #f8f9ff 100%);
+    border-left: 4px solid #0088cc;
+    padding: 18px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #444;
+}
+.tg-setup-guide h3 { font-size: 15px; color: #0088cc; margin-bottom: 12px; }
+.tg-setup-guide ol { padding-left: 20px; margin-bottom: 8px; }
+.tg-setup-guide li { margin-bottom: 8px; }
+.tg-setup-guide code {
+    background: white; padding: 2px 6px; border-radius: 4px;
+    font-family: 'Courier New', monospace; color: #d63384; font-size: 12.5px;
+    border: 1px solid #e0e0e0;
+}
+.tg-setup-guide a { color: #0088cc; font-weight: 600; text-decoration: none; }
+.tg-setup-guide a:hover { text-decoration: underline; }
+.tg-setup-guide .highlight {
+    background: #fff9db; padding: 2px 6px; border-radius: 4px;
+    color: #856404; font-weight: 600;
+}
+.tg-status-box {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; border-radius: 10px;
+    background: #f8f9fa; border: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+.tg-status-box.configured { background: #d4edda; border-color: #28a745; }
+.tg-status-box.not-configured { background: #fff3cd; border-color: #ffc107; }
+.tg-status-box .icon { font-size: 28px; }
+.tg-status-box .text { flex: 1; font-size: 14px; }
+.tg-status-box .text strong { display: block; font-size: 15px; margin-bottom: 3px; }
+.tg-status-box .text small { color: #666; font-size: 12px; }
+
 @media (max-width: 700px) {
     .product-selector-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
@@ -333,11 +360,10 @@ table tr:hover { background: #f9f9f9; }
         <div class="auth-error" id="authError"></div>
         <div class="auth-success" id="authSuccess"></div>
         
-        <!-- LOGIN FORM -->
         <div class="auth-form active" id="loginForm">
             <div class="form-group">
-                <label>📧 ইমেইল বা 📱 ফোন নম্বর</label>
-                <input type="text" id="loginIdentifier" placeholder="you@example.com অথবা 01XXXXXXXXX" autocomplete="username">
+                <label>📧 ইমেইল</label>
+                <input type="text" id="loginIdentifier" placeholder="you@gmail.com" autocomplete="username">
             </div>
             <div class="form-group">
                 <label>🔒 পাসওয়ার্ড</label>
@@ -348,7 +374,6 @@ table tr:hover { background: #f9f9f9; }
             <div class="auth-link" onclick="resendVerificationEmail()" style="color: #ff9800;">📧 ভেরিফিকেশন ইমেইল আবার পাঠান</div>
         </div>
         
-        <!-- SIGNUP FORM -->
         <div class="auth-form" id="signupForm">
             <div class="form-group">
                 <label>👤 আপনার নাম</label>
@@ -431,11 +456,15 @@ table tr:hover { background: #f9f9f9; }
         <button class="tab-btn" onclick="switchTab('stock')">📊 স্টক</button>
         <button class="tab-btn" onclick="switchTab('daily')">📅 দৈনিক সামারি</button>
         <button class="tab-btn" onclick="switchTab('allorders')">📁 সব অর্ডার</button>
+        <button class="tab-btn" onclick="switchTab('telegram')">🔧 Telegram সেটআপ</button>
     </div>
 
     <div id="order-tab" class="tab-content active">
         <div class="card">
             <h2>🛒 নতুন অর্ডার তৈরি করুন</h2>
+            <div id="tgWarnOrder" class="alert alert-warn" style="display:none;">
+                ⚠️ Telegram সেটআপ করা হয়নি। <a href="#" onclick="switchTab('telegram', event); return false;" style="color:#856404; font-weight:700;">এখনই সেটআপ করুন</a> — যাতে অর্ডার সেভ করলে Telegram-এ মেসেজ যায়।
+            </div>
             <div class="form-row">
                 <div class="form-group"><label>অর্ডার তারিখ</label><input type="date" id="orderDate"></div>
                 <div class="form-group"><label>দোকানের নাম</label><input type="text" id="customerName" placeholder="দোকানের নাম লিখুন"></div>
@@ -534,8 +563,91 @@ table tr:hover { background: #f9f9f9; }
             <div id="allOrdersList"></div>
         </div>
     </div>
+
+    <!-- ================= TELEGRAM SETUP TAB ================= -->
+    <div id="telegram-tab" class="tab-content">
+        <div class="card">
+            <h2>🔧 Telegram সেটআপ</h2>
+            
+            <div class="tg-status-box" id="tgStatusBox">
+                <div class="icon" id="tgStatusIcon">⚙️</div>
+                <div class="text">
+                    <strong id="tgStatusTitle">সেটআপ করা হয়নি</strong>
+                    <small id="tgStatusSub">নিচের ফর্ম পূরণ করে আপনার Telegram বট যোগ করুন</small>
+                </div>
+            </div>
+            
+            <div class="tg-setup-guide">
+                <h3>📖 কীভাবে আপনার নিজের Telegram বট তৈরি করবেন</h3>
+                <ol>
+                    <li>
+                        <b>BotFather</b>-কে Telegram-এ খুঁজুন: <a href="https://t.me/BotFather" target="_blank">@BotFather</a> 
+                        অথবা নিজের Telegram অ্যাপে সার্চ বক্সে <code>@BotFather</code> লিখুন।
+                    </li>
+                    <li>
+                        BotFather-কে <code>/newbot</code> পাঠান এবং নির্দেশনা অনুসরণ করুন:
+                        <ul style="margin: 6px 0 6px 20px;">
+                            <li>বটের নাম দিন (যেমন: <i>My Dal Orders</i>)</li>
+                            <li>বটের username দিন যা <span class="highlight">bot</span> দিয়ে শেষ হবে (যেমন: <i>my_dal_orders_bot</i>)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        সফলভাবে তৈরি হলে BotFather আপনাকে একটি <b>Bot Token</b> দেবে। 
+                        এটা দেখতে এরকম হবে: <code>1234567890:ABCdefGHIjklMNOpqrsTUVwxyz1234</code>
+                        <br>👉 এই টোকেনটি কপি করে নিচের <b>Bot Token</b> ফিল্ডে বসান।
+                    </li>
+                    <li>
+                        এখন <b>নিজের Telegram চ্যাট ID</b> বের করুন। সহজ উপায়:
+                        <ul style="margin: 6px 0 6px 20px;">
+                            <li>Telegram-এ সার্চ করুন <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a></li>
+                            <li>তার সাথে চ্যাটে যেকোনো মেসেজ পাঠান — সে আপনার <b>Chat ID</b> জানাবে (যেমন: <code>5098702978</code>)</li>
+                            <li><b>গ্রুপে পাঠাতে চাইলে:</b> বটকে গ্রুপে যোগ করুন, তারপর গ্রুপ থেকে একটি মেসেজ পাঠান। তারপর ব্রাউজারে ভিজিট করুন <code>https://api.telegram.org/bot&lt;YOUR_BOT_TOKEN&gt;/getUpdates</code> — সেখানে <code>chat.id</code>-র মান হবে গ্রুপের Chat ID (সাধারণত নেগেটিভ, যেমন <code>-1001234567890</code>)।</li>
+                        </ul>
+                    </li>
+                    <li>
+                        অবশেষে, আপনার বটকে একবার <b>যেকোনো মেসেজ পাঠান</b> (যেমন <code>hi</code>)। 
+                        <span class="highlight">⚠️ এটা না করলে Telegram API "chat not found" error দেবে।</span>
+                    </li>
+                    <li>
+                        উপরের সব তথ্য নিচের ফর্মে বসিয়ে <b>💾 সেভ করুন</b> চাপুন। তারপর <b>🧪 টেস্ট করুন</b> চেপে নিশ্চিত হোন।
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label>🤖 Bot Token *</label>
+                    <input type="text" id="tgBotToken" placeholder="যেমন: 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz1234" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label>💬 Chat ID *</label>
+                    <input type="text" id="tgChatId" placeholder="যেমন: 5098702978  অথবা গ্রুপের জন্য: -1001234567890" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                <button class="btn btn-success" onclick="saveTelegramSettings()">💾 সেভ করুন</button>
+                <button class="btn btn-info" onclick="testTelegramConnection()">🧪 টেস্ট করুন</button>
+                <button class="btn btn-danger" onclick="clearTelegramSettings()">🗑️ মুছে ফেলুন</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💡 তথ্য</h2>
+            <div style="font-size: 13.5px; line-height: 1.8; color: #555;">
+                <p>✅ আপনার Bot Token এবং Chat ID <b>শুধুমাত্র আপনার অ্যাকাউন্টে</b> সেভ থাকে। অন্য কোনো ব্যবহারকারী আপনার টোকেন দেখতে পাবে না।</p>
+                <p>✅ আপনার সব অর্ডার, দৈনিক সামারি এবং টেস্ট মেসেজ <b>আপনার নিজের বটে</b> পাঠাবে।</p>
+                <p>🔒 নিরাপত্তার জন্য — পাবলিক কম্পিউটারে কাজ শেষে <b>লগআউট</b> করুন।</p>
+                <p>📱 একাধিক ডিভাইসে লগইন করলেও একই বট সেটিং কাজ করবে (Firestore থেকে লোড হয়)।</p>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- Restock Modal -->
 <div class="modal-overlay" id="restockModal">
     <div class="modal-box">
         <h3>📦 স্টক যোগ করুন</h3>
@@ -560,7 +672,7 @@ table tr:hover { background: #f9f9f9; }
 <div id="pdfRenderContainer" class="pdf-render-container" style="display:none;"></div>
 
 <script>
-// ==================== FIREBASE CONFIG (আসল API Key সহ) ====================
+// ==================== FIREBASE CONFIG ====================
 const FIREBASE_CONFIG = {
     apiKey: "AIzaSyB0okXjn_0wqG3BKtdagoDZh4lxPqMyXZM",
     authDomain: "easy-sr.firebaseapp.com",
@@ -570,17 +682,12 @@ const FIREBASE_CONFIG = {
     appId: "1:542609540299:web:cd97e07924958d6289c74e"
 };
 
-// ==================== TELEGRAM CONFIG ====================
-const TELEGRAM_BOT_TOKEN = '8382862782:AAH8j4XS-GAE11d2EtFWuq9b-8hphbte7mU';
-const TELEGRAM_CHAT_ID = '5098702978';
-const TELEGRAM_API = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-
 // ==================== GLOBAL STATE ====================
 let firebaseApp = null, auth = null, db = null;
 let currentUser = null;
 let products = [];
 let orders = [];
-let userInfo = { srName: '', zoneName: '' };
+let userInfo = { srName: '', zoneName: '', telegramBotToken: '', telegramChatId: '' };
 let currentOrderItems = [];
 let editingProductId = null;
 let restockTargetId = null;
@@ -611,7 +718,6 @@ function initFirebase() {
         auth.onAuthStateChanged(async (user) => {
             authResolved = true;
             if (user) {
-                // ইমেইল ভেরিফিকেশন চেক (শুধু email/password প্রোভাইডারের জন্য)
                 const isEmailProvider = user.providerData && user.providerData.some(p => p.providerId === 'password');
                 if (isEmailProvider && !user.emailVerified) {
                     currentUser = null;
@@ -620,7 +726,6 @@ function initFirebase() {
                     showAuthError('⚠️ আপনার ইমেইল (' + user.email + ') এখনো ভেরিফাই করা হয়নি। ইনবক্সে পাঠানো লিংকে ক্লিক করুন। লিংক না পেলে "ভেরিফিকেশন ইমেইল আবার পাঠান" এ ক্লিক করুন।');
                     return;
                 }
-                
                 currentUser = user;
                 window.pendingVerificationUser = null;
                 try {
@@ -650,7 +755,7 @@ function showErrorOnLoading(msg) {
     if (el) el.innerHTML = `<div style="color:#fff; font-size:14px; padding:0 20px; line-height:1.6;">${msg}</div>`;
 }
 
-// ==================== AUTH SCREEN ====================
+// ==================== SCREENS ====================
 function showAuthScreen() {
     document.getElementById('authScreen').style.display = 'flex';
     document.getElementById('loadingScreen').style.display = 'none';
@@ -675,7 +780,6 @@ function updateUserProfileUI() {
     const avatar = document.getElementById('userAvatar');
     const nameEl = document.getElementById('userName');
     const emailEl = document.getElementById('userEmail');
-    
     if (currentUser.photoURL) {
         avatar.innerHTML = `<img src="${currentUser.photoURL}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
     } else {
@@ -698,7 +802,6 @@ function switchAuthTab(tab) {
         document.getElementById('signupForm').classList.add('active');
     }
 }
-
 function clearAuthMessages() {
     document.getElementById('authError').classList.remove('show');
     document.getElementById('authSuccess').classList.remove('show');
@@ -723,7 +826,6 @@ function resetAuthButtons() {
     document.getElementById('googleBtn').disabled = false;
 }
 
-// ফোন → ফেক ইমেইল, ইমেইল → সরাসরি
 function normalizeIdentifier(input) {
     const trimmed = (input || '').trim();
     if (!trimmed) return null;
@@ -738,26 +840,21 @@ function normalizeIdentifier(input) {
     return null;
 }
 
-// ==================== LOGIN ====================
+// ==================== LOGIN / SIGNUP ====================
 async function doLogin() {
     clearAuthMessages();
     const identifier = document.getElementById('loginIdentifier').value;
     const password = document.getElementById('loginPassword').value;
-    
-    if (!identifier) { showAuthError('ইমেইল বা ফোন নম্বর দিন'); return; }
+    if (!identifier) { showAuthError('ইমেইল দিন'); return; }
     if (!password) { showAuthError('পাসওয়ার্ড দিন'); return; }
     if (password.length < 6) { showAuthError('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে'); return; }
-    
     const email = normalizeIdentifier(identifier);
-    if (!email) { showAuthError('সঠিক ইমেইল বা ফোন নম্বর দিন'); return; }
-    
+    if (!email) { showAuthError('সঠিক ইমেইল দিন'); return; }
     const btn = document.getElementById('loginBtn');
     btn.disabled = true;
     btn.textContent = 'লগইন হচ্ছে...';
-    
     try {
         await auth.signInWithEmailAndPassword(email, password);
-        // onAuthStateChanged হ্যান্ডেল করবে
     } catch (err) {
         console.error(err);
         btn.disabled = false;
@@ -766,79 +863,52 @@ async function doLogin() {
     }
 }
 
-// ==================== SIGNUP ====================
 async function doSignup() {
     clearAuthMessages();
     const name = document.getElementById('signupName').value.trim();
     const identifier = document.getElementById('signupIdentifier').value;
     const password = document.getElementById('signupPassword').value;
-    
     if (!name) { showAuthError('আপনার নাম দিন'); return; }
     if (!identifier) { showAuthError('ইমেইল দিন'); return; }
     if (!password || password.length < 6) { showAuthError('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের দিন'); return; }
-    
     const email = normalizeIdentifier(identifier);
     if (!email) { showAuthError('সঠিক ইমেইল দিন'); return; }
-    
-    // ফোন দিয়ে ভেরিফিকেশন সম্ভব নয়, তাই ইমেইল দরকার
     if (email.endsWith('@phone.dalgroup.app')) {
         showAuthError('ইমেইল ভেরিফিকেশনের জন্য একটি আসল Gmail বা ইমেইল দিয়ে অ্যাকাউন্ট খুলুন।');
         return;
     }
-    
     const btn = document.getElementById('signupBtn');
     btn.disabled = true;
     btn.textContent = 'অ্যাকাউন্ট তৈরি হচ্ছে...';
-    
     try {
         const userCredential = await auth.createUserWithEmailAndPassword(email, password);
         const user = userCredential.user;
-        
-        // নাম আপডেট
-        try {
-            await user.updateProfile({ displayName: name });
-        } catch (e) { console.warn('Profile update:', e); }
-        
-        // ইমেইল ভেরিফিকেশন লিংক পাঠান
+        try { await user.updateProfile({ displayName: name }); } catch (e) { console.warn(e); }
         let emailSent = false;
         try {
-            const actionCodeSettings = {
-                url: 'https://sohangazi.github.io/EASY-SR/',
-                handleCodeInApp: false
-            };
+            const actionCodeSettings = { url: 'https://sohangazi.github.io/EASY-SR/', handleCodeInApp: false };
             await user.sendEmailVerification(actionCodeSettings);
             emailSent = true;
-            console.log('Verification email sent to:', email);
-        } catch (e) {
-            console.warn('Verification email error:', e);
-        }
-        
-        // Firestore-এ profile তৈরি
+        } catch (e) { console.warn('Verification email error:', e); }
         try {
             await db.collection('users').doc(user.uid).set({
-                srName: name,
-                zoneName: '',
-                email: email,
-                emailVerified: false,
+                srName: name, zoneName: '',
+                telegramBotToken: '', telegramChatId: '',
+                email: email, emailVerified: false,
                 createdAt: new Date().toISOString()
             }, { merge: true });
         } catch (e) { console.warn('Profile save:', e); }
-        
-        // সফল মেসেজ
         if (emailSent) {
-            showAuthSuccess('✅ অ্যাকাউন্ট তৈরি হয়েছে! ভেরিফিকেশন লিংক আপনার ' + email + ' এ পাঠানো হয়েছে। ইনবক্স (এবং Spam ফোল্ডার) চেক করে লিংকে ক্লিক করুন। এরপর লগইন করতে পারবেন।');
+            showAuthSuccess('✅ অ্যাকাউন্ট তৈরি হয়েছে! ভেরিফিকেশন লিংক আপনার ' + email + ' এ পাঠানো হয়েছে। ইনবক্স (এবং Spam ফোল্ডার) চেক করে লিংকে ক্লিক করুন।');
         } else {
-            showAuthSuccess('✅ অ্যাকাউন্ট তৈরি হয়েছে! তবে ভেরিফিকেশন ইমেইল পাঠাতে সমস্যা হয়েছে। লগইন পেজে "ভেরিফিকেশন ইমেইল আবার পাঠান" এ ক্লিক করুন।');
+            showAuthSuccess('✅ অ্যাকাউন্ট তৈরি হয়েছে! লগইন পেজে "ভেরিফিকেশন ইমেইল আবার পাঠান" এ ক্লিক করুন।');
         }
-        
-        // লগ আউট করে লগইন ট্যাবে ফিরে যান
         setTimeout(async () => {
             try { await auth.signOut(); } catch(e) {}
             switchAuthTab('login');
             document.getElementById('loginIdentifier').value = email;
             document.getElementById('loginPassword').value = '';
         }, 200);
-        
     } catch (err) {
         console.error(err);
         btn.disabled = false;
@@ -847,19 +917,11 @@ async function doSignup() {
     }
 }
 
-// ==================== RESEND VERIFICATION EMAIL ====================
 async function resendVerificationEmail() {
     clearAuthMessages();
-    // যদি pending verification user থাকে সেটা ব্যবহার করুন
     let user = window.pendingVerificationUser;
-    
-    // না থাকলে, চেষ্টা করুন সদ্য login করার
-    if (!user && auth.currentUser) {
-        user = auth.currentUser;
-    }
-    
+    if (!user && auth.currentUser) user = auth.currentUser;
     if (!user) {
-        // শেষ চেষ্টা: লগইন form থেকে ইমেইল+পাসওয়ার্ড দিয়ে সাইন-ইন করার চেষ্টা
         const identifier = document.getElementById('loginIdentifier').value;
         const password = document.getElementById('loginPassword').value;
         if (!identifier || !password) {
@@ -867,10 +929,7 @@ async function resendVerificationEmail() {
             return;
         }
         const email = normalizeIdentifier(identifier);
-        if (!email) {
-            showAuthError('সঠিক ইমেইল দিন');
-            return;
-        }
+        if (!email) { showAuthError('সঠিক ইমেইল দিন'); return; }
         try {
             const cred = await auth.signInWithEmailAndPassword(email, password);
             user = cred.user;
@@ -880,12 +939,10 @@ async function resendVerificationEmail() {
             return;
         }
     }
-    
     if (user.emailVerified) {
         showAuthSuccess('✅ আপনার ইমেইল ইতিমধ্যেই ভেরিফাইড। লগইন করুন।');
         return;
     }
-    
     try {
         await user.sendEmailVerification();
         showAuthSuccess('✅ নতুন ভেরিফিকেশন লিংক ' + user.email + ' এ পাঠানো হয়েছে। ইনবক্স এবং Spam ফোল্ডার চেক করুন।');
@@ -895,7 +952,6 @@ async function resendVerificationEmail() {
     }
 }
 
-// ==================== GOOGLE SIGN-IN ====================
 async function signInWithGoogle() {
     clearAuthMessages();
     const btn = document.getElementById('googleBtn');
@@ -911,39 +967,27 @@ async function signInWithGoogle() {
             try {
                 const provider = new firebase.auth.GoogleAuthProvider();
                 await auth.signInWithRedirect(provider);
-            } catch (e2) {
-                showAuthError(translateAuthError(e2));
-            }
-        } else {
-            showAuthError(translateAuthError(err));
-        }
+            } catch (e2) { showAuthError(translateAuthError(e2)); }
+        } else { showAuthError(translateAuthError(err)); }
     }
 }
 
-// ==================== FORGOT PASSWORD ====================
 async function showForgotPassword() {
     clearAuthMessages();
     const identifier = document.getElementById('loginIdentifier').value;
-    if (!identifier) {
-        showAuthError('প্রথমে আপনার ইমেইল লিখুন, তারপর "পাসওয়ার্ড ভুলে গেছেন" ক্লিক করুন');
-        return;
-    }
+    if (!identifier) { showAuthError('প্রথমে আপনার ইমেইল লিখুন'); return; }
     const email = normalizeIdentifier(identifier);
     if (!email || email.endsWith('@phone.dalgroup.app')) {
-        showAuthError('পাসওয়ার্ড রিসেট শুধু ইমেইল দিয়ে সম্ভব। ফোন ব্যবহার করলে অ্যাডমিনের সাথে যোগাযোগ করুন।');
+        showAuthError('পাসওয়ার্ড রিসেট শুধু ইমেইল দিয়ে সম্ভব।');
         return;
     }
     if (!confirm(`পাসওয়ার্ড রিসেট লিংক ${email} এ পাঠানো হবে?`)) return;
-    
     try {
         await auth.sendPasswordResetEmail(email);
-        showAuthSuccess('পাসওয়ার্ড রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে। ইনবক্স চেক করুন।');
-    } catch (err) {
-        showAuthError(translateAuthError(err));
-    }
+        showAuthSuccess('পাসওয়ার্ড রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে।');
+    } catch (err) { showAuthError(translateAuthError(err)); }
 }
 
-// ==================== ERROR TRANSLATION ====================
 function translateAuthError(err) {
     const code = err.code || '';
     const map = {
@@ -956,17 +1000,13 @@ function translateAuthError(err) {
         'auth/weak-password': 'পাসওয়ার্ড খুব দুর্বল (কমপক্ষে ৬ অক্ষর)',
         'auth/too-many-requests': 'অনেকবার চেষ্টা করা হয়েছে। কিছুক্ষণ পর আবার চেষ্টা করুন।',
         'auth/network-request-failed': 'নেটওয়ার্ক সমস্যা। ইন্টারনেট চেক করুন।',
-        'auth/operation-not-allowed': 'Email/Password লগইন Firebase-এ চালু করা হয়নি। Console → Authentication → Sign-in method → Email/Password → Enable করুন।',
-        'auth/unauthorized-domain': 'এই ডোমেইন Firebase-এ অনুমোদিত নয়। Authentication → Settings → Authorized domains-এ sohangazi.github.io যোগ করুন।',
-        'auth/popup-blocked': 'পপআপ ব্লক হয়েছে — redirect মেথডে চেষ্টা হচ্ছে',
-        'auth/popup-closed-by-user': 'লগইন বাতিল করা হয়েছে',
-        'auth/cancelled-popup-request': 'লগইন বাতিল হয়েছে',
+        'auth/operation-not-allowed': 'Email/Password লগইন Firebase-এ চালু করা হয়নি।',
+        'auth/unauthorized-domain': 'এই ডোমেইন Firebase-এ অনুমোদিত নয়।',
         'auth/api-key-not-valid': 'API Key সঠিক নয়। Firebase Config আপডেট করুন।',
     };
     return map[code] || err.message || 'একটি ত্রুটি ঘটেছে';
 }
 
-// ==================== SIGN OUT ====================
 async function signOutUser() {
     if (!confirm('লগআউট করতে চান? আপনার সব ডেটা ক্লাউডে সেভ থাকবে।')) return;
     try { await auth.signOut(); }
@@ -995,14 +1035,23 @@ async function loadUserDataFromCloud(uid) {
         ordersSnap.forEach(d => cloudOrders.push({ ...d.data(), id: d.id }));
         
         if (!userDoc.exists && cloudProducts.length === 0) {
-            userInfo = { srName: currentUser.displayName || '', zoneName: '' };
+            userInfo = { srName: currentUser.displayName || '', zoneName: '', telegramBotToken: '', telegramChatId: '' };
             products = getSampleProducts();
             orders = [];
-            await userDocRef.set({ srName: userInfo.srName, zoneName: '', createdAt: new Date().toISOString() });
+            await userDocRef.set({ 
+                srName: userInfo.srName, zoneName: '', 
+                telegramBotToken: '', telegramChatId: '',
+                createdAt: new Date().toISOString() 
+            });
             await saveAllProductsToCloud();
         } else {
             const data = userDoc.data() || {};
-            userInfo = { srName: data.srName || currentUser.displayName || '', zoneName: data.zoneName || '' };
+            userInfo = {
+                srName: data.srName || currentUser.displayName || '',
+                zoneName: data.zoneName || '',
+                telegramBotToken: data.telegramBotToken || '',
+                telegramChatId: data.telegramChatId || ''
+            };
             products = cloudProducts;
             orders = cloudOrders;
         }
@@ -1018,7 +1067,7 @@ async function loadUserDataFromCloud(uid) {
 function loadFromLocal() {
     products = JSON.parse(localStorage.getItem('dg_products_cloud') || '[]');
     orders = JSON.parse(localStorage.getItem('dg_orders_cloud') || '[]');
-    userInfo = JSON.parse(localStorage.getItem('dg_userinfo_cloud') || '{"srName":"","zoneName":""}');
+    userInfo = JSON.parse(localStorage.getItem('dg_userinfo_cloud') || '{"srName":"","zoneName":"","telegramBotToken":"","telegramChatId":""}');
     if (products.length === 0) { products = getSampleProducts(); orders = []; }
 }
 function getSampleProducts() {
@@ -1033,8 +1082,12 @@ async function saveProfileToCloud() {
     if (!currentUser || !db) return;
     try {
         setSyncStatus('saving', '☁ সেভ হচ্ছে...');
-        await db.collection('users').doc(currentUser.uid).set(
-            { srName: userInfo.srName || '', zoneName: userInfo.zoneName || '' }, { merge: true });
+        await db.collection('users').doc(currentUser.uid).set({
+            srName: userInfo.srName || '',
+            zoneName: userInfo.zoneName || '',
+            telegramBotToken: userInfo.telegramBotToken || '',
+            telegramChatId: userInfo.telegramChatId || ''
+        }, { merge: true });
         setSyncStatus('saved', '✓ সেভ হয়েছে');
     } catch (err) { setSyncStatus('error', '✗ সেভ ব্যর্থ'); }
 }
@@ -1098,32 +1151,139 @@ function showToast(message, type = 'info', duration = 3500) {
     toastTimer = setTimeout(() => toast.classList.remove('show'), duration);
 }
 
-// ==================== TELEGRAM ====================
+// ==================== TELEGRAM (per-user) ====================
 function setConnStatus(state, text) {
     const el = document.getElementById('connStatus');
     el.className = 'conn-status ' + (state || '');
     document.getElementById('connStatusText').textContent = text;
 }
+
+function isTelegramConfigured() {
+    return !!(userInfo.telegramBotToken && userInfo.telegramChatId);
+}
+
+function updateTelegramUI() {
+    // হেডারের connection status
+    if (!isTelegramConfigured()) {
+        setConnStatus('', '⚙️ Telegram সেটআপ করুন');
+    } else {
+        setConnStatus('', 'Telegram সংযোগ পরীক্ষা করুন');
+    }
+    
+    // Telegram tab-এ status box
+    const box = document.getElementById('tgStatusBox');
+    const icon = document.getElementById('tgStatusIcon');
+    const title = document.getElementById('tgStatusTitle');
+    const sub = document.getElementById('tgStatusSub');
+    
+    if (box && icon && title && sub) {
+        if (isTelegramConfigured()) {
+            box.className = 'tg-status-box configured';
+            icon.textContent = '✅';
+            title.textContent = 'Telegram সেটআপ সম্পন্ন';
+            const masked = userInfo.telegramChatId.length > 6 
+                ? userInfo.telegramChatId.slice(0, 3) + '...' + userInfo.telegramChatId.slice(-4)
+                : userInfo.telegramChatId;
+            sub.textContent = 'Chat ID: ' + masked + ' — নিচের টেস্ট বাটনে চেপে নিশ্চিত হোন';
+        } else {
+            box.className = 'tg-status-box not-configured';
+            icon.textContent = '⚙️';
+            title.textContent = 'সেটআপ করা হয়নি';
+            sub.textContent = 'নিচের ফর্ম পূরণ করে আপনার Telegram বট যোগ করুন';
+        }
+    }
+    
+    // Order tab-এ warning
+    const warn = document.getElementById('tgWarnOrder');
+    if (warn) warn.style.display = isTelegramConfigured() ? 'none' : 'block';
+    
+    // Input ফিল্ডে মান বসান
+    const tokenInput = document.getElementById('tgBotToken');
+    const chatInput = document.getElementById('tgChatId');
+    if (tokenInput && !tokenInput.value) tokenInput.value = userInfo.telegramBotToken || '';
+    if (chatInput && !chatInput.value) chatInput.value = userInfo.telegramChatId || '';
+}
+
+async function saveTelegramSettings() {
+    const token = document.getElementById('tgBotToken').value.trim();
+    const chatId = document.getElementById('tgChatId').value.trim();
+    
+    if (!token) { showToast('❌ Bot Token দিন', 'error'); return; }
+    if (!chatId) { showToast('❌ Chat ID দিন', 'error'); return; }
+    
+    // Bot Token ফরম্যাট চেক: 123456:ABC...
+    if (!/^\d+:[A-Za-z0-9_-]+$/.test(token)) {
+        if (!confirm('Bot Token-এর ফরম্যাট সন্দেহজনক। তবুও সেভ করবেন?')) return;
+    }
+    // Chat ID: নেগেটিভ বা পজিটিভ নাম্বার
+    if (!/^-?\d+$/.test(chatId)) {
+        if (!confirm('Chat ID সাধারণত শুধু সংখ্যা হয় (গ্রুপের জন্য "-" দিয়ে শুরু)। তবুও সেভ করবেন?')) return;
+    }
+    
+    userInfo.telegramBotToken = token;
+    userInfo.telegramChatId = chatId;
+    saveUserInfo();
+    await saveProfileToCloud();
+    updateTelegramUI();
+    showToast('✅ Telegram সেটিং সেভ হয়েছে! এখন টেস্ট করুন।', 'success', 4000);
+}
+
+async function clearTelegramSettings() {
+    if (!confirm('Telegram সেটিং মুছে ফেলবেন? এরপর অর্ডার সেভ করলে Telegram-এ মেসেজ যাবে না।')) return;
+    userInfo.telegramBotToken = '';
+    userInfo.telegramChatId = '';
+    document.getElementById('tgBotToken').value = '';
+    document.getElementById('tgChatId').value = '';
+    saveUserInfo();
+    await saveProfileToCloud();
+    updateTelegramUI();
+    showToast('🗑️ Telegram সেটিং মুছে ফেলা হয়েছে।', 'info');
+}
+
 async function sendTelegramMessage(text) {
-    const resp = await fetch(TELEGRAM_API, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: true })
+    if (!isTelegramConfigured()) {
+        throw new Error('Telegram সেটআপ করা হয়নি। 🔧 Telegram সেটআপ ট্যাবে গিয়ে Bot Token ও Chat ID যোগ করুন।');
+    }
+    const apiUrl = `https://api.telegram.org/bot${userInfo.telegramBotToken}/sendMessage`;
+    const resp = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: userInfo.telegramChatId,
+            text: text,
+            parse_mode: 'HTML',
+            disable_web_page_preview: true
+        })
     });
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    if (!resp.ok) {
+        const t = await resp.text();
+        throw new Error('HTTP ' + resp.status + ' — ' + (t || '').slice(0, 120));
+    }
     const data = await resp.json();
-    if (!data.ok) throw new Error('API: ' + (data.description || 'Unknown'));
+    if (!data.ok) {
+        let hint = '';
+        const d = data.description || '';
+        if (d.includes('chat not found')) hint = ' (আপনার বটকে আগে hi লিখে মেসেজ পাঠান)';
+        else if (d.includes('Unauthorized')) hint = ' (Bot Token সঠিক নয়)';
+        else if (d.includes('bot was blocked')) hint = ' (আপনার বট blocked — unblock করুন)';
+        throw new Error('Telegram: ' + d + hint);
+    }
     return data;
 }
+
 async function sendOrderToTelegram(order) {
     let msg = `🏪 <b>দোকান:</b> ${escapeHtml(order.customer)}\n`;
     if (order.address) msg += `📍 <b>ঠিকানা:</b> ${escapeHtml(order.address)}\n`;
+    if (order.phone) msg += `📞 <b>মোবাইল:</b> ${escapeHtml(order.phone)}\n`;
     msg += `\n📦 <b>অর্ডার:</b>\n`;
     order.items.forEach((item, idx) => {
         msg += `${idx + 1}. ${escapeHtml(item.productName)} — ${item.qty} ${escapeHtml(item.unit)} — ৳${fmt(item.total)}\n`;
     });
     msg += `\n💰 <b>মোট: ৳${fmt(order.grandTotal)}</b>`;
+    if (order.srName) msg += `\n\n👤 <b>SR:</b> ${escapeHtml(order.srName)}`;
     return sendTelegramMessage(msg);
 }
+
 async function sendDailySummaryToTelegram() {
     const date = document.getElementById('dailyDate').value;
     if (!date) { showToast('তারিখ নির্বাচন করুন!', 'error'); return; }
@@ -1158,20 +1318,26 @@ async function sendDailySummaryToTelegram() {
         showToast('✅ দৈনিক সামারি Telegram-এ পাঠানো হয়েছে!', 'success', 5000);
     } catch (err) {
         setConnStatus('err', '✗ সংযোগ ব্যর্থ');
-        showToast('❌ ' + err.message, 'error', 6000);
+        showToast('❌ ' + err.message, 'error', 8000);
     }
 }
+
 async function testTelegramConnection() {
+    if (!isTelegramConfigured()) {
+        showToast('⚙️ প্রথমে Telegram সেটআপ করুন — নিচের তথ্য দিন', 'error', 5000);
+        switchTab('telegram', { target: document.querySelector('button.tab-btn[onclick*="telegram"]') });
+        return;
+    }
     setConnStatus('', 'পরীক্ষা চলছে...');
     showToast('📡 Telegram-এ টেস্ট পাঠানো হচ্ছে...', 'info', 2000);
     try {
-        const testMsg = `🧪 <b>টেস্ট মেসেজ সফল!</b>\n\nEasy Order SR সিস্টেম সংযোগ সক্রিয়।\n\n🧑‍💼 SR: ${userInfo.srName || 'N/A'}\n📍 জোন: ${userInfo.zoneName || 'N/A'}\n👤 ইউজার: ${currentUser ? currentUser.email : 'N/A'}\n⏰ সময়: ${new Date().toLocaleString('bn-BD')}`;
+        const testMsg = `🧪 <b>টেস্ট মেসেজ সফল!</b>\n\nডাল গ্রুপ ম্যানেজমেন্ট সিস্টেম সংযোগ সক্রিয়।\n\n🧑‍💼 SR: ${userInfo.srName || 'N/A'}\n📍 জোন: ${userInfo.zoneName || 'N/A'}\n👤 ইউজার: ${currentUser ? currentUser.email : 'N/A'}\n⏰ সময়: ${new Date().toLocaleString('bn-BD')}`;
         await sendTelegramMessage(testMsg);
         setConnStatus('ok', '✓ সংযোগ ঠিক আছে');
-        showToast('✅ টেস্ট মেসেজ পাঠানো হয়েছে!', 'success', 5000);
+        showToast('✅ টেস্ট মেসেজ পাঠানো হয়েছে! Telegram-এ চেক করুন।', 'success', 5000);
     } catch (err) {
         setConnStatus('err', '✗ সংযোগ ব্যর্থ');
-        showToast('❌ ' + err.message, 'error', 7000);
+        showToast('❌ ' + err.message, 'error', 8000);
     }
 }
 
@@ -1340,11 +1506,21 @@ async function downloadDailySummaryPDF() {
 }
 
 // ==================== TABS ====================
-function switchTab(tab) {
+function switchTab(tab, evt) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(tab + '-tab').classList.add('active');
-    event.target.classList.add('active');
+    // Find the matching tab button
+    let targetBtn = null;
+    if (evt && evt.target && evt.target.classList) {
+        targetBtn = evt.target;
+    } else {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + tab + "'")) targetBtn = b;
+        });
+    }
+    if (targetBtn) targetBtn.classList.add('active');
+    
     if (tab === 'products') renderProducts();
     if (tab === 'stock') renderStock();
     if (tab === 'daily') {
@@ -1354,6 +1530,7 @@ function switchTab(tab) {
     }
     if (tab === 'allorders') loadAllOrders();
     if (tab === 'order') renderProductSelector();
+    if (tab === 'telegram') updateTelegramUI();
 }
 
 // ==================== PRODUCTS ====================
@@ -1374,7 +1551,6 @@ async function saveProduct() {
     if (!name || price <= 0) { showToast('নাম এবং দাম সঠিকভাবে দিন!', 'error'); return; }
     if (type === 'পলি' && (perBag <= 0 || piecesPerPoly <= 0)) { showToast('১ পলিতে পিস এবং ১ বস্তায় পলির সংখ্যা দিন!', 'error'); return; }
     if (type === 'ডজন' && (perCarton <= 0 || piecesPerDojon <= 0)) { showToast('১ ডজনে পিস এবং ১ কার্টুনে ডজনের সংখ্যা দিন!', 'error'); return; }
-    
     if (editingProductId) {
         const p = products.find(x => x.id === editingProductId);
         if (p) {
@@ -1708,6 +1884,12 @@ async function saveOrder() {
         await saveOrderToCloud(order);
     }
     renderProducts(); renderStock(); resetOrderForm();
+    
+    if (!isTelegramConfigured()) {
+        showToast('✅ অর্ডার সেভ হয়েছে! তবে Telegram সেটআপ না থাকায় মেসেজ যায়নি। 🔧 Telegram সেটআপ ট্যাবে যান।', 'info', 7000);
+        return;
+    }
+    
     showToast('📤 Telegram-এ পাঠানো হচ্ছে...', 'info', 2000);
     try {
         await sendOrderToTelegram(order);
@@ -1715,7 +1897,7 @@ async function saveOrder() {
         showToast('✅ অর্ডার সেভ হয়েছে এবং Telegram-এ পাঠানো হয়েছে!', 'success', 5000);
     } catch (err) {
         setConnStatus('err', '✗ সংযোগ ব্যর্থ');
-        showToast('⚠ অর্ডার সেভ হয়েছে তবে Telegram-এ যায়নি: ' + err.message, 'error', 6000);
+        showToast('⚠ অর্ডার সেভ হয়েছে তবে Telegram-এ যায়নি: ' + err.message, 'error', 8000);
     }
 }
 function resetOrderForm() {
@@ -1814,10 +1996,13 @@ function initAppAfterLoad() {
     document.getElementById('dailyDate').value = new Date().toISOString().split('T')[0];
     document.getElementById('srName').value = userInfo.srName || '';
     document.getElementById('zoneName').value = userInfo.zoneName || '';
+    document.getElementById('tgBotToken').value = userInfo.telegramBotToken || '';
+    document.getElementById('tgChatId').value = userInfo.telegramChatId || '';
     toggleProductFields();
     renderProductSelector();
     renderProducts();
     updateOrderSummary();
+    updateTelegramUI();
 }
 
 window.addEventListener('error', function(e) {
