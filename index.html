@@ -24,7 +24,7 @@ body { background: #f0f2f5; color: #333; padding: 15px; }
     position: fixed; inset: 0; z-index: 5000; overflow-y: auto;
 }
 .auth-box {
-    background: white; border-radius: 20px; padding: 32px 28px; max-width: 420px; width: 100%;
+    background: white; border-radius: 20px; padding: 32px 28px; max-width: 440px; width: 100%;
     box-shadow: 0 25px 70px rgba(0,0,0,0.3); margin: auto;
 }
 .auth-logo { font-size: 52px; text-align: center; margin-bottom: 10px; }
@@ -131,6 +131,7 @@ header {
     width: 38px; height: 38px; border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.2);
     display: flex; align-items: center; justify-content: center; font-size: 18px;
+    overflow: hidden;
 }
 .user-info .name { font-weight: 700; font-size: 14px; color: white; line-height: 1.2; }
 .user-info .email { font-size: 11px; color: rgba(255,255,255,0.75); }
@@ -344,6 +345,7 @@ table tr:hover { background: #f9f9f9; }
             </div>
             <button class="btn-auth" id="loginBtn" onclick="doLogin()">সাইন ইন করুন</button>
             <div class="auth-link" onclick="showForgotPassword()">পাসওয়ার্ড ভুলে গেছেন?</div>
+            <div class="auth-link" onclick="resendVerificationEmail()" style="color: #ff9800;">📧 ভেরিফিকেশন ইমেইল আবার পাঠান</div>
         </div>
         
         <!-- SIGNUP FORM -->
@@ -353,8 +355,8 @@ table tr:hover { background: #f9f9f9; }
                 <input type="text" id="signupName" placeholder="আপনার নাম লিখুন" autocomplete="name">
             </div>
             <div class="form-group">
-                <label>📧 ইমেইল বা 📱 ফোন নম্বর</label>
-                <input type="text" id="signupIdentifier" placeholder="you@example.com অথবা 01XXXXXXXXX" autocomplete="username">
+                <label>📧 ইমেইল</label>
+                <input type="email" id="signupIdentifier" placeholder="you@gmail.com" autocomplete="email">
             </div>
             <div class="form-group">
                 <label>🔒 পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label>
@@ -558,9 +560,9 @@ table tr:hover { background: #f9f9f9; }
 <div id="pdfRenderContainer" class="pdf-render-container" style="display:none;"></div>
 
 <script>
-// ==================== FIREBASE CONFIG ====================
+// ==================== FIREBASE CONFIG (আসল API Key সহ) ====================
 const FIREBASE_CONFIG = {
-    apiKey: "AIzaSyB6oKXjn_0wgG3BKtdagoDZh4LxPqMyXZM",
+    apiKey: "AIzaSyB0okXjn_0wqG3BKtdagoDZh4lxPqMyXZM",
     authDomain: "easy-sr.firebaseapp.com",
     projectId: "easy-sr",
     storageBucket: "easy-sr.firebasestorage.app",
@@ -583,6 +585,7 @@ let currentOrderItems = [];
 let editingProductId = null;
 let restockTargetId = null;
 let dataLoaded = false;
+window.pendingVerificationUser = null;
 
 // ==================== INIT FIREBASE ====================
 function initFirebase() {
@@ -608,7 +611,18 @@ function initFirebase() {
         auth.onAuthStateChanged(async (user) => {
             authResolved = true;
             if (user) {
+                // ইমেইল ভেরিফিকেশন চেক (শুধু email/password প্রোভাইডারের জন্য)
+                const isEmailProvider = user.providerData && user.providerData.some(p => p.providerId === 'password');
+                if (isEmailProvider && !user.emailVerified) {
+                    currentUser = null;
+                    window.pendingVerificationUser = user;
+                    showAuthScreen();
+                    showAuthError('⚠️ আপনার ইমেইল (' + user.email + ') এখনো ভেরিফাই করা হয়নি। ইনবক্সে পাঠানো লিংকে ক্লিক করুন। লিংক না পেলে "ভেরিফিকেশন ইমেইল আবার পাঠান" এ ক্লিক করুন।');
+                    return;
+                }
+                
                 currentUser = user;
+                window.pendingVerificationUser = null;
                 try {
                     await loadUserDataFromCloud(user.uid);
                     showMainApp();
@@ -691,39 +705,36 @@ function clearAuthMessages() {
 }
 function showAuthError(msg) {
     const el = document.getElementById('authError');
-    el.textContent = '❌ ' + msg;
+    el.textContent = msg;
     el.classList.add('show');
     document.getElementById('authSuccess').classList.remove('show');
 }
 function showAuthSuccess(msg) {
     const el = document.getElementById('authSuccess');
-    el.textContent = '✅ ' + msg;
+    el.textContent = msg;
     el.classList.add('show');
     document.getElementById('authError').classList.remove('show');
 }
 function resetAuthButtons() {
     document.getElementById('loginBtn').disabled = false;
+    document.getElementById('loginBtn').textContent = 'সাইন ইন করুন';
     document.getElementById('signupBtn').disabled = false;
+    document.getElementById('signupBtn').textContent = 'অ্যাকাউন্ট তৈরি করুন';
     document.getElementById('googleBtn').disabled = false;
 }
 
-// ইমেইল বা ফোন থেকে Firebase-এর উপযুক্ত identifier তৈরি করা
+// ফোন → ফেক ইমেইল, ইমেইল → সরাসরি
 function normalizeIdentifier(input) {
     const trimmed = (input || '').trim();
     if (!trimmed) return null;
-    
-    // ইমেইল দিলে সরাসরি ব্যবহার
     if (trimmed.includes('@')) {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) return null;
         return trimmed.toLowerCase();
     }
-    
-    // ফোন দিলে (শুধু ডিজিট) → ফেক ইমেইল বানানো
     const digits = trimmed.replace(/[\s\-\(\)]/g, '');
     if (/^\+?\d{10,15}$/.test(digits)) {
         return digits.replace(/^\+/, '') + '@phone.dalgroup.app';
     }
-    
     return null;
 }
 
@@ -763,11 +774,17 @@ async function doSignup() {
     const password = document.getElementById('signupPassword').value;
     
     if (!name) { showAuthError('আপনার নাম দিন'); return; }
-    if (!identifier) { showAuthError('ইমেইল বা ফোন নম্বর দিন'); return; }
+    if (!identifier) { showAuthError('ইমেইল দিন'); return; }
     if (!password || password.length < 6) { showAuthError('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের দিন'); return; }
     
     const email = normalizeIdentifier(identifier);
-    if (!email) { showAuthError('সঠিক ইমেইল বা ফোন নম্বর দিন'); return; }
+    if (!email) { showAuthError('সঠিক ইমেইল দিন'); return; }
+    
+    // ফোন দিয়ে ভেরিফিকেশন সম্ভব নয়, তাই ইমেইল দরকার
+    if (email.endsWith('@phone.dalgroup.app')) {
+        showAuthError('ইমেইল ভেরিফিকেশনের জন্য একটি আসল Gmail বা ইমেইল দিয়ে অ্যাকাউন্ট খুলুন।');
+        return;
+    }
     
     const btn = document.getElementById('signupBtn');
     btn.disabled = true;
@@ -775,26 +792,106 @@ async function doSignup() {
     
     try {
         const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        
         // নাম আপডেট
         try {
-            await userCredential.user.updateProfile({ displayName: name });
+            await user.updateProfile({ displayName: name });
         } catch (e) { console.warn('Profile update:', e); }
+        
+        // ইমেইল ভেরিফিকেশন লিংক পাঠান
+        let emailSent = false;
+        try {
+            const actionCodeSettings = {
+                url: 'https://sohangazi.github.io/EASY-SR/',
+                handleCodeInApp: false
+            };
+            await user.sendEmailVerification(actionCodeSettings);
+            emailSent = true;
+            console.log('Verification email sent to:', email);
+        } catch (e) {
+            console.warn('Verification email error:', e);
+        }
         
         // Firestore-এ profile তৈরি
         try {
-            await db.collection('users').doc(userCredential.user.uid).set({
+            await db.collection('users').doc(user.uid).set({
                 srName: name,
                 zoneName: '',
                 email: email,
+                emailVerified: false,
                 createdAt: new Date().toISOString()
             }, { merge: true });
         } catch (e) { console.warn('Profile save:', e); }
+        
+        // সফল মেসেজ
+        if (emailSent) {
+            showAuthSuccess('✅ অ্যাকাউন্ট তৈরি হয়েছে! ভেরিফিকেশন লিংক আপনার ' + email + ' এ পাঠানো হয়েছে। ইনবক্স (এবং Spam ফোল্ডার) চেক করে লিংকে ক্লিক করুন। এরপর লগইন করতে পারবেন।');
+        } else {
+            showAuthSuccess('✅ অ্যাকাউন্ট তৈরি হয়েছে! তবে ভেরিফিকেশন ইমেইল পাঠাতে সমস্যা হয়েছে। লগইন পেজে "ভেরিফিকেশন ইমেইল আবার পাঠান" এ ক্লিক করুন।');
+        }
+        
+        // লগ আউট করে লগইন ট্যাবে ফিরে যান
+        setTimeout(async () => {
+            try { await auth.signOut(); } catch(e) {}
+            switchAuthTab('login');
+            document.getElementById('loginIdentifier').value = email;
+            document.getElementById('loginPassword').value = '';
+        }, 200);
         
     } catch (err) {
         console.error(err);
         btn.disabled = false;
         btn.textContent = 'অ্যাকাউন্ট তৈরি করুন';
         showAuthError(translateAuthError(err));
+    }
+}
+
+// ==================== RESEND VERIFICATION EMAIL ====================
+async function resendVerificationEmail() {
+    clearAuthMessages();
+    // যদি pending verification user থাকে সেটা ব্যবহার করুন
+    let user = window.pendingVerificationUser;
+    
+    // না থাকলে, চেষ্টা করুন সদ্য login করার
+    if (!user && auth.currentUser) {
+        user = auth.currentUser;
+    }
+    
+    if (!user) {
+        // শেষ চেষ্টা: লগইন form থেকে ইমেইল+পাসওয়ার্ড দিয়ে সাইন-ইন করার চেষ্টা
+        const identifier = document.getElementById('loginIdentifier').value;
+        const password = document.getElementById('loginPassword').value;
+        if (!identifier || !password) {
+            showAuthError('প্রথমে ইমেইল ও পাসওয়ার্ড লিখে "সাইন ইন করুন" চাপুন, তারপর এই বাটনে চাপুন।');
+            return;
+        }
+        const email = normalizeIdentifier(identifier);
+        if (!email) {
+            showAuthError('সঠিক ইমেইল দিন');
+            return;
+        }
+        try {
+            const cred = await auth.signInWithEmailAndPassword(email, password);
+            user = cred.user;
+            window.pendingVerificationUser = user;
+        } catch (err) {
+            showAuthError('লগইন ব্যর্থ: ' + translateAuthError(err));
+            return;
+        }
+    }
+    
+    if (user.emailVerified) {
+        showAuthSuccess('✅ আপনার ইমেইল ইতিমধ্যেই ভেরিফাইড। লগইন করুন।');
+        return;
+    }
+    
+    try {
+        await user.sendEmailVerification();
+        showAuthSuccess('✅ নতুন ভেরিফিকেশন লিংক ' + user.email + ' এ পাঠানো হয়েছে। ইনবক্স এবং Spam ফোল্ডার চেক করুন।');
+    } catch (err) {
+        console.error(err);
+        showAuthError('পাঠানো যায়নি: ' + translateAuthError(err) + '. কিছুক্ষণ পর আবার চেষ্টা করুন।');
     }
 }
 
@@ -810,7 +907,6 @@ async function signInWithGoogle() {
     } catch (err) {
         console.error(err);
         btn.disabled = false;
-        // Popup fail হলে redirect চেষ্টা
         if (err.code === 'auth/popup-blocked' || err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request') {
             try {
                 const provider = new firebase.auth.GoogleAuthProvider();
@@ -865,6 +961,7 @@ function translateAuthError(err) {
         'auth/popup-blocked': 'পপআপ ব্লক হয়েছে — redirect মেথডে চেষ্টা হচ্ছে',
         'auth/popup-closed-by-user': 'লগইন বাতিল করা হয়েছে',
         'auth/cancelled-popup-request': 'লগইন বাতিল হয়েছে',
+        'auth/api-key-not-valid': 'API Key সঠিক নয়। Firebase Config আপডেট করুন।',
     };
     return map[code] || err.message || 'একটি ত্রুটি ঘটেছে';
 }
@@ -1750,7 +1847,6 @@ document.addEventListener('DOMContentLoaded', function() {
         saveUserInfo();
         if (dataLoaded) saveProfileToCloud();
     });
-    // Enter key on login/signup
     document.getElementById('loginPassword').addEventListener('keydown', function(e) {
         if (e.key === 'Enter') doLogin();
     });
@@ -1758,7 +1854,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Enter') doSignup();
     });
     
-    // Firebase লোড হওয়ার জন্য অপেক্ষা
     if (typeof firebase === 'undefined') {
         let waitCount = 0;
         const iv = setInterval(() => {
